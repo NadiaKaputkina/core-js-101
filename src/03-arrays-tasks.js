@@ -200,8 +200,8 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  return arr.map((item) => item.join()).join('\n');
 }
 
 /**
@@ -272,8 +272,14 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  let newArr = [];
+
+  arr.forEach((item, i) => {
+    newArr = newArr.concat(Array(i + 1).fill(item));
+  });
+
+  return newArr;
 }
 
 
@@ -290,7 +296,7 @@ function propagateItemsByPositionIndex(/* arr */) {
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
-function get3TopItems(/* arr */) {
+function get3TopItems(arr) {
   throw new Error('Not implemented');
 }
 
@@ -586,8 +592,14 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length === 1) return arr;
+
+  const newHeadIndex = Math.ceil(arr.length / 2);
+  const head = arr.slice(0, newHeadIndex);
+  const middle = (arr.length % 2 === 0) ? [] : arr.slice(newHeadIndex - 1, newHeadIndex);
+  const tail = arr.slice(newHeadIndex);
+  return tail.concat(middle).concat(head);
 }
 
 
