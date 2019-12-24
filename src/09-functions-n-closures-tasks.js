@@ -180,7 +180,7 @@ function partialUsingArguments(fn, ...args1) {
 function getIdGeneratorFunction(startFrom) {
   let i = startFrom - 1;
 
-  return function () {
+  return () => {
     i += 1;
     return i;
   };
